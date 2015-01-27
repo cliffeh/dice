@@ -34,3 +34,6 @@
 
 # the executable
 dice
+
+# test touchfile
+.test

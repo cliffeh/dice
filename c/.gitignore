@@ -30,3 +30,7 @@
 
 # emacs
 *~
+\#.*\#
+
+# the executable
+dice

@@ -3,22 +3,22 @@
 #include <time.h>
 #include <stdlib.h>
 
-int roll()
+void roll(int *r)
 {
-  return rollndm(1, 6, 0);
+  rollndm(r, 1, 6, 0);
 }
 
-int rolln(int n)
+void rolln(int *r, int n)
 {
-  return rollndm(n, 6, 0);
+  rollndm(r, n, 6, 0);
 }
 
-int rollnd(int n, int d)
+void rollnd(int *r, int n, int d)
 {
-  return rollndm(n, d, 0);
+  rollndm(r, n, d, 0);
 }
 
-int rollndm(int n, int d, int m)
+void rollndm(int *r, int n, int d, int m)
 {
   // TODO impl
 }

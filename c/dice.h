@@ -1,10 +1,10 @@
 #ifndef __DICE_H
 #define __DICE_H 1
 
-int roll();                       // default: 1d6
-int rolln(int n);                 // default: nd6
-int rollnd(int n, int d);
-int rollndm(int n, int s, int m);
+void roll(int *r);                         // default: 1d6
+void rolln(int *r, int n);                 // default: nd6
+void rollnd(int *r, int n, int d);
+void rollndm(int *r, int n, int s, int m);
 
 #endif
 

@@ -1,7 +1,7 @@
-CFLAGS=-g
+CFLAGS=-g # -DDEBUG
 
 dice: dice.o main.o
-	$(CC) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 dice.o: dice.c
 

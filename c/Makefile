@@ -1,3 +1,5 @@
+CFLAGS=-g
+
 dice: dice.o main.o
 	$(CC) -o $@ $^
 
@@ -5,12 +7,12 @@ dice.o: dice.c
 
 main.o: main.c
 
-test: .test
+test: FORCE
+	make -C test
 
-.test:
-	make -C test && touch .test
+FORCE:
 
-emacs-clean:
+emacs-clean: FORCE
 	find . -iname '*~' -exec rm -f {} \;
 
 clean: emacs-clean

@@ -5,21 +5,19 @@
 
 void roll(int *r)
 {
-  rollndm(r, 1, 6, 0);
+  rollnd(r, 1, 6);
 }
 
 void rolln(int *r, int n)
 {
-  rollndm(r, n, 6, 0);
+  rollnd(r, n, 6);
 }
 
 void rollnd(int *r, int n, int d)
 {
-  rollndm(r, n, d, 0);
+  int i;
+  srand(time(NULL));
+  for(i = 0; i < n; i++) {
+    r[i] = (rand()%d)+1;
+  }
 }
-
-void rollndm(int *r, int n, int d, int m)
-{
-  // TODO impl
-}
-

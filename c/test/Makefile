@@ -1,16 +1,14 @@
-run-tests: test
+run-tests: test ../dice
 	./test
 
-test: test.o ../dice.o
-	$(CC) -o $@ $^
-
-../dice.o:
+../dice:
 	make -C ../
 
-test.o: test.c
+emacs-clean:
+	rm -f *~ \#*\#
 
-clean:
+clean: emacs-clean
 	rm -f *.o
 
 realclean: clean
-	rm -f test
+

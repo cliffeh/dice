@@ -40,3 +40,6 @@ dice
 
 # test touchfile
 .test
+
+# python
+*.pyc

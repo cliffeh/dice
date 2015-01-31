@@ -6,21 +6,26 @@
 #
 import sys
 import re
+import math
 import itertools
+from collections import Counter
 
-# n rolls of d-sided di(c)e
-m = re.match('(\d+)d(\d+)', sys.argv[1])
-n = int(m.group(1))
-d = int(m.group(2))
+def prob(n=1, d=6):
+    return Counter([sum(p) for p in itertools.product(range(1, d+1), repeat=n)])
 
-num = 0
-rolls = {}
-for r in [sum(p) for p in itertools.product(range(1, d+1), repeat=n)]:
-    num += 1
-    if r in rolls:
-        rolls[r] += 1
-    else:
-        rolls[r] = 1
+def main():
+    # n rolls of d-sided di(c)e
+    m = re.match('(\d+)d(\d+)', sys.argv[1])
+    n = int(m.group(1))
+    d = int(m.group(2))
 
-for r, v in sorted(rolls.items()):
-    print '{0}: {1}/{2} ({3})'.format(r, v, num, float(v)/float(num))
+    poss = math.pow(d, n)
+
+    total = 0
+    for r, v in sorted(prob(n, d).items()):
+        print '{0}: {1}/{2} ({3})'.format(r, v, poss, float(v)/float(poss))
+        total += float(v)/float(poss)
+
+    print 'total: {0}'.format(total)
+
+if __name__ == "__main__": main()

@@ -8,7 +8,7 @@ emacs-clean:
 	rm -f *~ \#*\#
 
 clean: emacs-clean
-	rm -f *.o
+	rm -f *.o *.pyc
 
 realclean: clean
 

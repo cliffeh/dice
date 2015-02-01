@@ -20,6 +20,6 @@ clean: emacs-clean
 	make -C test clean
 
 realclean: clean
-	rm -f dice
+	rm -f dice *.exe
 	make -C test realclean
 	rm -f .test

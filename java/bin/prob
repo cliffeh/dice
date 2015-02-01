@@ -1,3 +1,3 @@
 #!/bin/bash
 
-java -cp target/classes net.thingly.dice.util.DiceCartesianProduct $@
+java -cp target/classes net.thingly.dice.util.Prob $@

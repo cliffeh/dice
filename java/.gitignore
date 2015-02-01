@@ -1,2 +1,7 @@
 # maven compiled classes
 target
+
+# java/eclipse
+.classpath
+.project
+.settings

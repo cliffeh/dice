@@ -42,6 +42,7 @@ public class DiceTest extends TestCase {
 		double chisq = 0;
 		double expected = ((double)iter)/6.0; 
 		for(int i = 0; i < results.length; i++) {
+			System.out.println(i+1 + ": " + results[i]);
 			chisq += Math.pow(((double)results[i])-expected, 2)/expected;
 		}
 		System.out.println("chi squared: " + chisq);

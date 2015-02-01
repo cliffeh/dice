@@ -1,0 +1,31 @@
+#!/usr/bin/python
+
+from prob import prob
+from collections import Counter
+import os
+
+iter = 20000
+
+print 'checking 4d6 ({0} times)'.format(iter)
+p = prob(n=4, d=6)
+results = {}
+for i in range(0, iter):
+    print 'on run #' + str(i) + '\r',
+    stream = os.popen('../dice 4d6')
+    r = sum(eval(stream.read()))
+    if r in results:
+        results[r] += 1
+    else:
+        results[r] = 1
+
+for k in p:
+    r = float(results[k])/float(iter)
+    e = float(p[k])/float(6**4)
+    print '{0}: {1} (expected: {2}; diff: {3})'.format(k, r, e, abs(r-e))
+
+print 'checking {0}d{1}'.format(iter, 8)
+stream = os.popen('../dice ' + str(iter) + 'd8')
+r = Counter(eval(stream.read()))
+exp = float(1)/float(8)
+for k, v in sorted(r.items()):
+    print '{0}: {1} (expected: {2}; diff: {3}'.format(k, float(v)/float(iter), exp, abs(exp-float(v)/float(iter)))

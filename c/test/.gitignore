@@ -1,6 +1,3 @@
-# test binary
-test
-
 # Object files
 *.o
 *.ko
@@ -33,7 +30,6 @@ test
 
 # emacs
 *~
-\#.*\#
 
 # the executable
 dice

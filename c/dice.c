@@ -18,8 +18,6 @@ static void _dice_init(const char *filename)
   srand(__dice_init);
 }
 
-#define DEBUG 1
-
 static void dice_init()
 {
   if(__dice_init != 0) return;

@@ -30,9 +30,6 @@
 
 # emacs
 *~
-\#.*\#
-test/\#test.c\#
-test/.\#test.c
 
 # the executable
 dice

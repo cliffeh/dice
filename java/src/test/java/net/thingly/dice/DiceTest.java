@@ -37,15 +37,16 @@ public class DiceTest extends TestCase {
 		for (int i = 0; i < iter; i++) {
 			int r = Dice.roll();
 			assertTrue(r >= 1 && r <= 6);
-			results[r-1]++;
+			results[r - 1]++;
 		}
-		double chisq = 0;
-		double expected = ((double)iter)/6.0; 
-		for(int i = 0; i < results.length; i++) {
-			System.out.println(i+1 + ": " + results[i]);
-			chisq += Math.pow(((double)results[i])-expected, 2)/expected;
+
+		double expected = ((double) iter) / 6.0;
+		for (int i = 0; i < results.length; i++) {
+			double pct = ((double) results[i]) / iter;
+			// not super-scientific, but i'm satisfied if we're within a half a
+			// percent for each possible outcome
+			assertTrue(Math.abs(pct - (expected / ((double) iter))) <= .005);
 		}
-		System.out.println("chi squared: " + chisq);
 	}
 
 	/**

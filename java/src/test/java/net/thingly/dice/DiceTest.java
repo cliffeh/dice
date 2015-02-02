@@ -1,5 +1,8 @@
 package net.thingly.dice;
 
+import java.util.Hashtable;
+
+import net.thingly.dice.util.Prob;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -42,10 +45,10 @@ public class DiceTest extends TestCase {
 
 		double expected = ((double) iter) / 6.0;
 		for (int i = 0; i < results.length; i++) {
-			double pct = ((double) results[i]) / iter;
+			double observed = ((double) results[i]) / iter;
 			// not super-scientific, but i'm satisfied if we're within a half a
 			// percent for each possible outcome
-			assertTrue(Math.abs(pct - (expected / ((double) iter))) <= .005);
+			assertTrue(Math.abs(observed - expected) / expected <= .005);
 		}
 	}
 
@@ -53,13 +56,44 @@ public class DiceTest extends TestCase {
 	 * Rigourous Test :-)
 	 */
 	public void testRollN() {
-		assertTrue(true);
+		int[] results = new int[6];
+		int[] rolls = Dice.roll(iter);
+		for (int i = 0; i < iter; i++) {
+			results[rolls[i] - 1]++;
+		}
+
+		double expected = ((double) iter) / 6.0;
+		for (int i = 0; i < results.length; i++) {
+			double observed = ((double) results[i]) / iter;
+			// not super-scientific, but i'm satisfied if we're within a half a
+			// percent for each possible outcome
+			assertTrue(Math.abs(observed - expected) / expected <= .005);
+		}
 	}
 
 	/**
 	 * Rigourous Test :-)
 	 */
 	public void testRollND() {
-		assertTrue(true);
+		Hashtable<Integer, Integer> results = new Hashtable<Integer, Integer>();
+		for (int i = 0; i < iter; i++) {
+			int[] r = Dice.roll(4, 12);
+			assertTrue(r.length == 4);
+			int key = 0;
+			for (int j = 0; j < r.length; i++) {
+				assertTrue(r[j] >= 1 && r[j] <= 12);
+				key += r[j];
+			}
+			int value = results.getOrDefault(key, 0);
+			results.put(key, value + 1);
+		}
+
+		Hashtable<Integer, Double> probs = Prob.prob(4, 12);
+		for (int key : probs.keySet()) {
+			double observed = ((double) results.getOrDefault(key, 0))
+					/ ((double) iter);
+			double expected = probs.get(key);
+			assertTrue((Math.abs(observed - expected) / expected) <= .005);
+		}
 	}
 }

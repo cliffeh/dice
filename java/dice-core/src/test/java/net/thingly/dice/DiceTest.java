@@ -12,7 +12,7 @@ import junit.framework.TestSuite;
  */
 public class DiceTest extends TestCase {
 
-	private int iter = 100000;
+	private int iter = 10000000;
 
 	/**
 	 * Create the test case
@@ -43,12 +43,13 @@ public class DiceTest extends TestCase {
 			results[r - 1]++;
 		}
 
-		double expected = ((double) iter) / 6.0;
+		double expected = 1.0 / 6.0;
 		for (int i = 0; i < results.length; i++) {
 			double observed = ((double) results[i]) / iter;
-			// not super-scientific, but i'm satisfied if we're within a half a
-			// percent for each possible outcome
-			assertTrue(Math.abs(observed - expected) / expected <= .005);
+			System.err.println(i + 1 + ": " + observed + " vs " + expected
+					+ " (" + Math.abs(observed - expected) / expected + ")");
+			// not super-scientific, but i'm satisfied if we're within 10%
+			assertTrue(Math.abs(observed - expected) / expected <= .1);
 		}
 	}
 
@@ -62,12 +63,13 @@ public class DiceTest extends TestCase {
 			results[rolls[i] - 1]++;
 		}
 
-		double expected = ((double) iter) / 6.0;
+		double expected = 1.0 / 6.0;
 		for (int i = 0; i < results.length; i++) {
 			double observed = ((double) results[i]) / iter;
-			// not super-scientific, but i'm satisfied if we're within a half a
-			// percent for each possible outcome
-			assertTrue(Math.abs(observed - expected) / expected <= .005);
+			System.err.println(i + 1 + ": " + observed + " vs " + expected
+					+ " (" + Math.abs(observed - expected) / expected + ")");
+			// not super-scientific, but i'm satisfied if we're within 10%
+			assertTrue(Math.abs(observed - expected) / expected <= .1);
 		}
 	}
 
@@ -93,7 +95,9 @@ public class DiceTest extends TestCase {
 			double observed = ((double) results.getOrDefault(key, 0))
 					/ ((double) iter);
 			double expected = probs.get(key);
-			assertTrue((Math.abs(observed - expected) / expected) <= .005);
+			System.err.println(key + ": " + observed + " vs " + expected + " ("
+					+ Math.abs(observed - expected) / expected + ")");
+			assertTrue((Math.abs(observed - expected) / expected) <= .1);
 		}
 	}
 }

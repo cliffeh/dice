@@ -80,7 +80,7 @@ public class DiceTest extends TestCase {
 			int[] r = Dice.roll(4, 12);
 			assertTrue(r.length == 4);
 			int key = 0;
-			for (int j = 0; j < r.length; i++) {
+			for (int j = 0; j < r.length; j++) {
 				assertTrue(r[j] >= 1 && r[j] <= 12);
 				key += r[j];
 			}

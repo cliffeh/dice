@@ -10,6 +10,7 @@
 
 	<modules>
 		<module>dice-core</module>
+		<module>dice-service</module>
 	</modules>
 
 	<dependencies>

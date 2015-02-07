@@ -8,15 +8,15 @@ import java.util.regex.Pattern;
 public class Dice {
 	private static final Random random = new Random();
 
-	static int roll() {
+	public static int roll() {
 		return roll(1, 6)[0];
 	}
 
-	static int[] roll(int n) {
+	public static int[] roll(int n) {
 		return roll(n, 6);
 	}
 
-	static int[] roll(int n, int d) {
+	public static int[] roll(int n, int d) {
 		int[] result = new int[n];
 		for (int i = 0; i < n; i++) {
 			result[i] = random.nextInt(d) + 1;

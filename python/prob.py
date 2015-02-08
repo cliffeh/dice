@@ -28,4 +28,4 @@ def main():
 
     print 'total: {0}'.format(total)
 
-if __name__ == "__main__": main()
+if __name__ == '__main__': main()
